@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Khasi Iasoh — AI-powered conversational assistant for the Khasi language of Meghalaya, India. Ask questions in Khasi or English and receive responses in Khasi."/>
+  <meta name="keywords" content="Khasi language, Meghalaya, AI chatbot, India, language model, translation"/>
+  <meta property="og:title" content="Khasi Iasoh — Ka Jingkynmaw Khasi AI"/>
+  <meta property="og:description" content="Speak in Khasi or English. Our AI responds in beautiful Khasi."/>
+  <title>Khasi Iasoh — Ka Jingkynmaw AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- Animated Background Layers -->
+  <div class="bg-wrap">
+    <div class="bg-image" id="bgImage"></div>
+    <div class="bg-mist mist-1"></div>
+    <div class="bg-mist mist-2"></div>
+    <div class="bg-mist mist-3"></div>
+    <div class="bg-overlay"></div>
+  </div>
+
+  <!-- Decorative floating particles -->
+  <div class="particles" id="particles" aria-hidden="true"></div>
+
+  <!-- ═══════════════════════════════════════════
+       HEADER
+  ══════════════════════════════════════════════ -->
+  <header class="app-header" role="banner">
+    <div class="header-inner">
+      <!-- Logo -->
+      <div class="logo-wrap">
+        <div class="logo-emblem" aria-hidden="true">
+          <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Khasi diamond/khmat motif -->
+            <polygon points="30,4 56,30 30,56 4,30" fill="none" stroke="url(#goldGrad)" stroke-width="2"/>
+            <polygon points="30,12 48,30 30,48 12,30" fill="rgba(212,160,23,0.15)" stroke="url(#goldGrad)" stroke-width="1.5"/>
+            <circle cx="30" cy="30" r="8" fill="url(#goldGrad)" opacity="0.9"/>
+            <circle cx="30" cy="30" r="4" fill="#1a4d2e"/>
+            <defs>
+              <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#f5d060"/>
+                <stop offset="50%" stop-color="#d4a017"/>
+                <stop offset="100%" stop-color="#a07010"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <h1 class="logo-title">Khasi Iasoh</h1>
+          <span class="logo-subtitle">Ka Jingkynmaw AI • Meghalaya</span>
+        </div>
+      </div>
+
+      <!-- Status -->
+      <div class="header-status" role="status" aria-live="polite">
+        <span class="status-dot" id="dot" aria-hidden="true"></span>
+        <span class="status-text" id="statusLabel">Connecting…</span>
+      </div>
+
+      <!-- Clear chat -->
+      <button class="header-btn" id="clearBtn" title="Clear conversation" aria-label="Clear conversation">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="1,4 1,10 7,10"></polyline>
+          <path d="M3.51,15a9,9,0,1,0,.49-3.88"></path>
+        </svg>
+      </button>
+    </div>
+    <!-- Header border pattern -->
+    <div class="header-pattern" aria-hidden="true"></div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════
+       MAIN CHAT AREA
+  ══════════════════════════════════════════════ -->
+  <main class="app-main" role="main">
+    <div class="chat-panel" id="chatPanel">
+
+      <!-- Welcome Screen -->
+      <div class="welcome-screen" id="welcome">
+        <div class="welcome-emblem" aria-hidden="true">
+          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="60,8 112,60 60,112 8,60" fill="none" stroke="url(#wGold)" stroke-width="2" opacity="0.6"/>
+            <polygon points="60,22 98,60 60,98 22,60" fill="none" stroke="url(#wGold)" stroke-width="1.5" opacity="0.4"/>
+            <polygon points="60,36 84,60 60,84 36,60" fill="rgba(212,160,23,0.1)" stroke="url(#wGold)" stroke-width="1.5"/>
+            <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-size="28" fill="#d4a017">🌿</text>
+            <defs>
+              <linearGradient id="wGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#f5d060"/>
+                <stop offset="100%" stop-color="#a07010"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <h2 class="welcome-title">Khublei Shibun! 🙏</h2>
+        <p class="welcome-desc">Phi lah ban pyrkhat ia kano kano ka jingkylli ha ka ktien Khasi bad ka English.</p>
+        <p class="welcome-sub">Ask anything in Khasi or English — all replies come in beautiful Khasi.</p>
+
+        <!-- Language notice -->
+        <div class="welcome-badge">
+          <span class="badge-icon">⚡</span>
+          <span>Powered by Gemini Flash + Advanced F1 Model</span>
+        </div>
+
+        <!-- Suggestion chips -->
+        <div class="chips-grid" role="list" aria-label="Suggested questions">
+          <button class="chip" data-q="Phi long kumno mynta?" role="listitem">
+            <span class="chip-icon">👋</span>Phi long kumno mynta?
+          </button>
+          <button class="chip" data-q="What is the history of Meghalaya?" role="listitem">
+            <span class="chip-icon">📚</span>History of Meghalaya?
+          </button>
+          <button class="chip" data-q="Kumno ban register ha skul?" role="listitem">
+            <span class="chip-icon">🏫</span>Kumno ban register ha skul?
+          </button>
+          <button class="chip" data-q="Tell me about Khasi culture" role="listitem">
+            <span class="chip-icon">🎭</span>Tell me about Khasi culture
+          </button>
+          <button class="chip" data-q="Ka Meghalaya ka dei kumno?" role="listitem">
+            <span class="chip-icon">⛰️</span>Ka Meghalaya ka dei kumno?
+          </button>
+          <button class="chip" data-q="How do I say thank you in Khasi?" role="listitem">
+            <span class="chip-icon">🙏</span>How to say thank you in Khasi?
+          </button>
+        </div>
+      </div>
+
+      <!-- Messages Container -->
+      <div class="messages" id="messages" role="log" aria-label="Chat messages" aria-live="polite"></div>
+
+      <!-- Pipeline Progress Indicator -->
+      <div class="pipeline-indicator hidden" id="pipelineIndicator" role="status" aria-label="Processing pipeline">
+        <div class="pipeline-steps">
+          <div class="pipeline-step" id="step1" data-step="1">
+            <div class="step-icon">🔄</div>
+            <div class="step-label">Translating Input</div>
+            <div class="step-detail" id="step1Detail">Khasi → English</div>
+          </div>
+          <div class="pipeline-arrow">→</div>
+          <div class="pipeline-step" id="step2" data-step="2">
+            <div class="step-icon">🧠</div>
+            <div class="step-label">AI Thinking</div>
+            <div class="step-detail" id="step2Detail">Gemini Flash</div>
+          </div>
+          <div class="pipeline-arrow">→</div>
+          <div class="pipeline-step" id="step3" data-step="3">
+            <div class="step-icon">✨</div>
+            <div class="step-label">Translating Reply</div>
+            <div class="step-detail" id="step3Detail">English → Khasi</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Typing Indicator (simple fallback) -->
+      <div class="typing-wrap hidden" id="typing" role="status" aria-label="AI is responding">
+        <div class="typing-avatar" aria-hidden="true">🌿</div>
+        <div class="typing-bubble">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ═══════════════════════════════════════════
+       INPUT FOOTER
+  ══════════════════════════════════════════════ -->
+  <footer class="app-footer" role="contentinfo">
+    <div class="footer-inner">
+
+      <!-- Language Toggle -->
+      <div class="lang-toggle-wrap">
+        <span class="lang-label">Input:</span>
+        <div class="lang-toggle" role="group" aria-label="Input language selection">
+          <button class="lang-btn active" id="btnKhasi" data-lang="khasi" aria-pressed="true">
+            <span class="lang-flag">🏔️</span>
+            <span class="lang-name">Khasi</span>
+            <span class="lang-badge">KHA</span>
+          </button>
+          <div class="lang-slider" id="langSlider" aria-hidden="true"></div>
+          <button class="lang-btn" id="btnEnglish" data-lang="english" aria-pressed="false">
+            <span class="lang-flag">🌐</span>
+            <span class="lang-name">English</span>
+            <span class="lang-badge">ENG</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Input Box -->
+      <div class="input-region">
+        <div class="input-box" id="inputBox">
+          <div class="input-lang-chip" id="inputLangChip">KHA</div>
+          <textarea
+            id="input"
+            rows="1"
+            placeholder="Thoh hajan… (Type in Khasi)"
+            autocomplete="off"
+            autocorrect="off"
+            spellcheck="false"
+            aria-label="Type your message"
+          ></textarea>
+          <button class="send-btn" id="sendBtn" disabled aria-label="Send message">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22,2 15,22 11,13 2,9"></polygon>
+            </svg>
+          </button>
+        </div>
+        <p class="input-hint">
+          <kbd>Enter</kbd> to send &nbsp;·&nbsp; <kbd>Shift+Enter</kbd> for new line &nbsp;·&nbsp; All replies in Khasi 🌿
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Footer decorative border -->
+    <div class="footer-pattern" aria-hidden="true"></div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
