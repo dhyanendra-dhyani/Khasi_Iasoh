@@ -9,8 +9,8 @@
    CONFIGURATION — Update these values
    ───────────────────────────────────────── */
 const CONFIG = {
-  GRADIO_URL:   "https://9fc44640515555505b.gradio.live",  // Your gradio.live URL
-  GEMINI_KEY:   "AIzaSyCvcYbOijYKfhNn0j-_m0WPcyPf730IiKo",               // Gemini API key
+  GRADIO_URL:   "https://eff6f08f33a4220a48.gradio.live",  // Your gradio.live URL
+  GEMINI_KEY:   "AQ.Ab8RN6LS-sH4hETt1Y82GNX6KuzdI5BP-zm7VlpVl4lJ83avDQ",               // Gemini API key
   GEMINI_MODEL: "gemini-2.0-flash",                         // Free flash model
 };
 
